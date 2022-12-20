@@ -1,0 +1,82 @@
+*{
+
+    margin: 0;
+
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #eee;
+}
+
+.wrapper{
+    max-width: 480px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 1rem;
+    margin: 0 auto;
+}
+.message-wrapper{
+    width: 100%;
+    padding: 0 1rem;
+    display: none;
+}
+.message{
+    margin: 0.5rem 0rem;
+    background: #212121;
+    color: #eaeaea;
+    padding: 1rem 1rem;
+    margin-top: 1.5rem;
+    font-weight: 400;
+    font-size: 13px;
+    width: 100%;
+    border-radius: 13px;
+}
+
+.main-heading{
+    color: #212121;
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+.sub-text{
+    color: #424242;
+    font-size: 15px;
+}
+
+.form-wrapper{
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+
+.input-field{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1rem 0rem;
+}
+
+
+.bottom-message{
+    width: 100%;
+    text-align: center;
+    color: #ccc;
+    margin-top: 2rem;
+}
+.bottom-message h5{
+    font-weight: 400;
+}
+.bottom-message h5 a{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+#otpForm{
+    display: none;
+}

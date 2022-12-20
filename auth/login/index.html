@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Mosyn - Login</title>
+
+	<!-- Site favicon -->
+	<link rel="icon" type="image/png" href="/assets/img/logo/favicon.png">
+
+    <!-- Axcon -->
+    <link href="https://www.axcon.my.id/assets/docs/fonts/axcon.css" rel="stylesheet">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="/assets/vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/assets/vendors/styles/style.css">
+
+</head>
+<body class="login-page">
+
+	<div class="pre-loader">
+		<div class="pre-loader-box">
+			<div class="loader-logo"><img src="/assets/img/logo/mosyn-dark.png" alt="Mosyn"></div>
+			<div class='loader-progress' id="progress_div">
+				<div class='bar' id='bar1'></div>
+			</div>
+			<div class='percent' id='percent1'>0%</div>
+			<div class="loading-text">
+				Loading...
+			</div>
+		</div>
+	</div>
+	
+	<div class="login-header box-shadow">
+		<div class="container-fluid d-flex justify-content-between align-items-center">
+			<div class="brand-logo">
+				<a href="/">
+					<img src="/assets/img/logo/mosyn-dark.png" alt="Mosyn">
+				</a>
+			</div>
+			<div class="login-menu">
+				<ul>
+					<li><a href="../register/">Register</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6 col-lg-7">
+					<img src="/assets/vendors/images/login-page-img.png" alt="Mosyn">
+				</div>
+				<div class="col-md-6 col-lg-5">
+					<div class="login-box bg-white box-shadow border-radius-10">
+						<div class="login-title">
+							<h2 class="text-center text-primary">Login To Mosyn</h2>
+						</div>
+						<form class="sign-in-form">
+							<div class="select-role">
+								<div class="btn-group btn-group-toggle" data-toggle="buttons">
+									<label class="btn active">
+										<input type="radio" name="options" id="buyer">
+										<div class="icon"><img src="/assets/vendors/images/person.svg" class="svg" alt="Mosyn"></div>
+										<span>I'm</span>
+										Buyer
+									</label>
+									<label class="btn">
+										<input type="radio" name="options" id="developer">
+										<div class="icon"><img src="/assets/vendors/images/briefcase.svg" class="svg" alt="Mosyn"></div>
+										<span>I'm</span>
+										Developer
+									</label>
+								</div>
+							</div>
+							<div class="input-group custom">
+								<input type="text" class="form-control form-control-lg" placeholder="Username" id="username">
+								<div class="input-group-append custom">
+									<span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
+								</div>
+							</div>
+							<div class="input-group custom">
+								<input type="password" class="form-control form-control-lg" placeholder="**********" id="password">
+								<div class="input-group-append custom">
+									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+								</div>
+							</div>
+							<div class="row pb-30">
+								<div class="col-6">
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="customCheck1">
+										<label class="custom-control-label" for="customCheck1">Remember</label>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="forgot-password"><a href="../forgot/">Forgot Password</a></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="input-group mb-0">
+										<a class="btn btn-primary btn-lg btn-block" id="signin-button">Sign In</a>
+									</div>
+									<div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OR</div>
+									<div class="input-group mb-0">
+										<a class="btn btn-outline-primary btn-lg btn-block" href="../register/">Register To Create Account</a>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="/assets/vendors/scripts/core.js"></script>
+	<script src="/assets/vendors/scripts/script.min.js"></script>
+	<script src="/assets/vendors/scripts/process.js"></script>
+	<script src="/assets/vendors/scripts/layout-settings.js"></script>
+
+	<script>
+		const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const container = document.querySelector(".container");
+
+sign_up_btn.addEventListener("click", () => {
+  container.classList.add("sign-up-mode");
+});
+
+sign_in_btn.addEventListener("click", () => {
+  container.classList.remove("sign-up-mode");
+});
+
+
+		// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js";
+import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+// import { getDatabase } from "firebase/database";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDTeplUsp-ttlPAtqKhluDnZxzSQEH2ot8",
+  authDomain: "mosyn-id.firebaseapp.com",
+  databaseURL: "https://mosyn-id-default-rtdb.firebaseio.com",
+  projectId: "mosyn-id",
+  storageBucket: "mosyn-id.appspot.com",
+  messagingSenderId: "107444210556",
+  appId: "1:107444210556:web:3ed7c380eb393f45e3f2f9",
+  measurementId: "G-1W100VK40W"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const database = getDatabase(app);
+let signinButton = document.getElementById("signin-button");
+let signupButton = document.getElementById("signup-button");
+
+signupButton.addEventListener("click", (e) => {
+  let name = document.getElementById("name").value;
+  let nohp = document.getElementById("nohp").value;
+  let emailSignup = document.getElementById("email_signup").value;
+  let passwordSignup = document.getElementById("psw_signup").value;
+
+  createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+
+      set(ref(database, "users/" + user.uid), {
+        name: name,
+        nohp: nohp,
+        email: emailSignup,
+        password: passwordSignup
+      })
+        .then(() => {
+          // Data saved successfully!
+          alert("user telah sukses dibuat");
+        })
+        .catch((error) => {
+          //the write failed
+          alert(error);
+        });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+});
+
+signinButton.addEventListener("click", (e) => {
+  let emailSignin = document.getElementById("email_signin").value;
+  let passwordSignin = document.getElementById("psw_signin").value;
+  signInWithEmailAndPassword(auth, emailSignin, passwordSignin)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      let lgDate = new Date();
+      update(ref(database, "users/" + user.uid), {
+        last_login: lgDate
+      })
+        .then(() => {
+          // Data saved successfully!
+          //   alert("user telah sukses login");
+          location.href = "admin.html";
+        })
+        .catch((error) => {
+          //the write failed
+          alert(error);
+        });
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+  signOut(auth)
+    .then(() => {})
+    .catch((error) => {});
+});
+
+	</script>
+</body>
+</html>
