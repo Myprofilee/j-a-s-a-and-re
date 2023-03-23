@@ -182,7 +182,7 @@ $(function () {
 
                     bar += '<li>';
                         bar += '<a href="/course" class="dropdown-toggle no-arrow">';
-                            bar += '<i class="micon ax-bookmark"></i><span class="mtext">Kelas</span>';
+                            bar += '<i class="micon ax-bookmark"></i><span class="mtext">Kelas Online</span>';
                         bar += '</a>';
                     bar += '</li>';
 
